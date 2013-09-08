@@ -184,7 +184,7 @@ void MainWindow::readPendingDatagrams() {
 
 void MainWindow::sendMessage(xPLMessage message) {
     QByteArray datagram = message.toString().toLocal8Bit();
-    int rslt = this->xplSocket->writeDatagram(datagram.data(), datagram.size(), QHostAddress("192.168.0.255"), BASE_XPL_PORT);
+    int rslt = this->xplSocket->writeDatagram(datagram.data(), datagram.size(), QHostAddress::Broadcast, BASE_XPL_PORT);
     if(rslt == -1) {
         qDebug() << xplSocket->errorString();
     }
